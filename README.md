@@ -2,10 +2,15 @@
 
 The objective of this casae study is to analyze the mobile manufacturere data and answer some key questions. The analysis is based on location, top customers, top models/manufacturer, average price of different models and timeline.
 
-The tables were created using the pre-written code "Mobile Manufacturere Analysis - Create Database and Tables". 
+The below tables were created using the pre-written code "Mobile Manufacturere Analysis - Create Database and Tables". 
 
- 
+- Dim_manufacturer: Mannufacturer information
+- Dim_model: detials of the models with manufacturer
+- Dim_customer: customer personal infromation
+- Dim_location: Store location information
+- Fact_Transactions: Sales transactions information
 
+Analysis
 
 1. ALL STATES WHERE CUSTOMERS HAVE BOUGHT CELLPHONES FROM 2005 
 
