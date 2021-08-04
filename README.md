@@ -19,7 +19,7 @@ The tables were created using the pre-written code "Mobile Manufacturer Analysis
 **Questions**
 
 
-1. List all states where customerS have bought mobile phones from 2005.
+1. List all states where customers have bought mobile phones from 2005.
 
 2. Which state in the US is buying the most SAMSUNG phones?
 
