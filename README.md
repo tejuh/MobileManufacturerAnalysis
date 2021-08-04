@@ -2,7 +2,7 @@
 
 The objective of this case study is to analyse the mobile manufacturer data and answer some key questions. The analysis is based on location, top customers, top models/manufacturer, average price of different models and years.
 
-The tables were created using the pre-written code "Mobile Manufacturer Analysis - Create Database and Tables". 
+The tables were created using the pre-written code "SQL Case Study 2 (Create Database and Tables)". 
 
 **Tables**
 
