@@ -1,7 +1,4 @@
-
-
-
- --1)ALL STATES WHERE CUSTOMERS HAVE BOUGHT CELLPHONES FROM 2005 
+--1)ALL STATES WHERE CUSTOMERS HAVE BOUGHT CELLPHONES FROM 2005 
 
 SELECT DISTINCT T1.STATE AS STATE1
 
@@ -12,8 +9,6 @@ left JOIN FACT_TRANSACTIONS AS T2 ON T1.IDLocation = T2.IDLocation
 WHERE 
 
 year(date) >= 2005
-
-
 
 
 
@@ -34,6 +29,7 @@ order by
 count(quantity) desc
 
 
+
 --3) SHOW THE NUMBER OF TRANSACTIONS FOR EACH MODEL PER ZIP CODE PER STATE 
 
 SELECT F.IDCUSTOMER, M.Model_Name, D.ZipCode, D.STATE, COUNT(F.IDCustomer) 
@@ -45,11 +41,15 @@ LEFT JOIN DIM_MODEL AS M ON F.IDModel = M.IDModel
 GROUP BY
 F.IDCustomer, D.ZipCode, D.STATE, M.Model_Name
 
+
+
 --4) SHOW THE CHEAPEST CELLPHONE
 
 SELECT TOP 1 Unit_price, Model_Name FROM DIM_MODEL
 
 ORDER BY Unit_price ASC;
+
+
 
 --5) FIND OUT THE AVERAGE PRICE FOR EACH MODEL IN TOP 5 MANUFACTURERES IN TERMS OF SALES QUANTITY AND ORDER BY AVERAGE PRICE 
 
@@ -82,8 +82,9 @@ d.Model_Name, Manufacturer_Name
 order by
 averageP desc
 
---6) LIST THE NAMES OF CUSTOMERS AND THE AVERAGE AMOUNT SPENT IN 2009 WHERE THE AVERAGE IS HIGHER THAN 500 
 
+
+--6) LIST THE NAMES OF CUSTOMERS AND THE AVERAGE AMOUNT SPENT IN 2009 WHERE THE AVERAGE IS HIGHER THAN 500 
  
  SELECT C.Customer_Name, abs(AVG(TOTALPRICE)) AS AVERAGE_PRICE FROM FACT_TRANSACTIONS AS F
 
@@ -97,6 +98,8 @@ averageP desc
 
  HAVING 
  abs(AVG(TOTALPRICE)) > 500
+
+
 
 --7) LIST IF THERE IS ANY MODEL THAT WAS IN TOP 5 IN TERMS OF QUANTITY, SIMULTANEOUSLY IN 2008, 2009 AND 2010 
 
@@ -165,13 +168,13 @@ YEAR(DATE) = 2010
 GROUP BY 
 M.IDManufacturer, d.Manufacturer_Name, YEAR(DATE)
 ORDER BY 
-QTY DESC
- 
+QTY DESC 
 )
-
 AS TAB1
 order by 
 my_rank desc
+
+
 
 --9) SHOW THE MANUFACTURERS THAT SOLD CELLPHONE IN 2010 BUT DIDNT IN 2009 - correct
 
@@ -194,26 +197,22 @@ WHERE
 YEAR(DATE) = 2009 
 GROUP BY
 d.IDManufacturer,  d.Manufacturer_Name
-
-
 )
 as A
 
 
---10) FIND TOP 100 CUSTOMERS AND THEIR AVERAGE SPEND, AVERAGE QUANTITY BY EACH YEAR. ALSO FIND THE PERCENTAGE OF CHNGE IN THEIR SPEND, - correct
 
+--10) FIND TOP 100 CUSTOMERS AND THEIR AVERAGE SPEND, AVERAGE QUANTITY BY EACH YEAR. ALSO FIND THE PERCENTAGE OF CHANGE IN THEIR SPENDING
 
 select Customer,  averageP,  avgQ, years, ((averageP-per)/averageP) * 100 as percentage_change from
 
 (
-
  select top 100 c.Customer_Name as customer, abs(avg(TotalPrice)) as averageP, avg(quantity) as avgQ, year(date) as years,
  lag(abs(avg(TotalPrice)),1) over (partition by customer_name order by year(date))  as per
 
  from FACT_TRANSACTIONS as F
 
  left join DIM_CUSTOMER as c on f.IDCustomer = c.IDCustomer
-
 
  group by
  c.Customer_Name, year(date)
