@@ -1,19 +1,24 @@
 # Mobile Manufacturer Analysis
 
-The objective of this casae study is to analyze the mobile manufacturere data and answer some key questions. The analysis is based on location, top customers, top models/manufacturer, average price of different models and years.
+The objective of this case study is to analyse the mobile manufacturer data and answer some key questions. The analysis is based on location, top customers, top models/manufacturer, average price of different models and years.
 
-The below tables were created using the pre-written code "Mobile Manufacturere Analysis - Create Database and Tables". 
+The tables were created using the pre-written code "Mobile Manufacturer Analysis - Create Database and Tables". 
 
-- Dim_manufacturer: Mannufacturer information
-- Dim_model: detials of the models with manufacturer
-- Dim_customer: customer personal infromation
+**Tables**
+
+- Dim_manufacturer: Manufacturer information
+- Dim_model: Details of the models with manufacturer
+- Dim_customer: Customer personal information
 - Dim_location: Store location information
 - Fact_Transactions: Sales transactions information
 
+**Database schema**
 
-Code
+![image](https://user-images.githubusercontent.com/58387500/128227931-e26c5b40-5ade-44be-bc8e-edf9e07931c1.png)
 
-1. ALL STATES WHERE CUSTOMERS HAVE BOUGHT CELLPHONES FROM 2005 
+**Code**
+
+1. List all states where customer have bought mobile phones from 2005.
 
 ```
 SELECT DISTINCT T1.STATE AS STATE1
@@ -25,7 +30,7 @@ WHERE
 year(date) >= 2005
 ```
 
-2. WHICH STATE IN US IS BUYING MORE SAMSUNG PHONES?
+2. Which state in the US is buying the most SAMSUNG phones?
 
 ```
 SELECT top 1 
@@ -43,7 +48,8 @@ order by
 count(quantity) desc
 ```
 
-3. SHOW THE NUMBER OF TRANSACTIONS FOR EACH MODEL PER ZIP CODE PER STATE 
+3. Show the total number of transacitons for each model per zip code per state. 
+
 ```
 SELECT F.IDCUSTOMER, M.Model_Name, D.ZipCode, D.STATE, COUNT(F.IDCustomer) 
 AS  COUNT_ID FROM FACT_TRANSACTIONS AS F
@@ -55,14 +61,14 @@ GROUP BY
 F.IDCustomer, D.ZipCode, D.STATE, M.Model_Name
 ```
 
-4. SHOW THE CHEAPEST CELLPHONE
+4. Show the cheapest mobile phone
 ```
 SELECT TOP 1 Unit_price, Model_Name FROM DIM_MODEL
 
 ORDER BY Unit_price ASC;
 ```
 
-5. FIND OUT THE AVERAGE PRICE FOR EACH MODEL IN TOP 5 MANUFACTURERES IN TERMS OF SALES QUANTITY AND ORDER BY AVERAGE PRICE 
+5. Find out the average price for each model the in top 5 manufacturers in terms of sales quantity and order by average price 
 ```
 select top 5 manufacturer_name, d.Model_Name, abs(avg(totalPrice)) as averageP from fact_transactions as f
 
@@ -93,7 +99,7 @@ order by
 averageP desc
 
 ```
-6. LIST THE NAMES OF CUSTOMERS AND THE AVERAGE AMOUNT SPENT IN 2009 WHERE THE AVERAGE IS HIGHER THAN 500 
+6. List the names of customers and the average amount spent in 2009 where the average is higher than 500
  
  ```
  SELECT C.Customer_Name, abs(AVG(TOTALPRICE)) AS AVERAGE_PRICE FROM FACT_TRANSACTIONS AS F
@@ -110,7 +116,7 @@ averageP desc
  abs(AVG(TOTALPRICE)) > 500
  
  ```
-7. LIST IF THERE IS ANY MODEL THAT WAS IN TOP 5 IN TERMS OF QUANTITY, SIMULTANEOUSLY IN 2008, 2009 AND 2010 
+ 7. List if there are any models that was in top 5 in terms of quantity, simultaneously in 2008, 2009 AND 2010 
 ```
 select * from 
 (
@@ -149,7 +155,9 @@ abs(SUM(QUANTITY)) DESC
 as A
 ```
 
-8. SHOW THE MANUFACTURERS WITH THE SECOND TOP SALES IN THE YEAR 2009 AND THE MANUFACTURER WITH THE SECOND TOP SALES IN THE YEAR OF 2010 
+
+8. Show the manufacturers with the second top sales in the year 2009 and 2010
+
 ```
 SELECT top 2 Manufacturer_Name, QTY, rank() over (partition by years order by qty desc) my_rank FROM 
 (
@@ -181,7 +189,8 @@ order by
 my_rank desc
 
 ```
-9. SHOW THE MANUFACTURERS THAT SOLD CELLPHONE IN 2010 BUT DIDNT IN 2009 - correct
+9. Show the manufacturers that sold cellphone in 2010 but didnt in 2009
+
 ```
 select * from 
 (
@@ -206,7 +215,7 @@ d.IDManufacturer,  d.Manufacturer_Name
 as A
 
 ```
-10. FIND TOP 100 CUSTOMERS AND THEIR AVERAGE SPEND, AVERAGE QUANTITY BY EACH YEAR. ALSO FIND THE PERCENTAGE OF CHNGE IN THEIR SPEND, - correct
+10. Find top 100 customers and their average spend, average quantity by each year. Also find the percentage of change in their spending.
 
 ```
 select Customer,  averageP,  avgQ, years, ((averageP-per)/averageP) * 100 as percentage_change from
