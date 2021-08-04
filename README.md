@@ -1,6 +1,6 @@
 # Mobile Manufacturer Analysis
 
-The objective of this casae study is to analyze the mobile manufacturere data and answer some key questions. The analysis is based on location, top customers, top models/manufacturer, average price of different models and timeline.
+The objective of this casae study is to analyze the mobile manufacturere data and answer some key questions. The analysis is based on location, top customers, top models/manufacturer, average price of different models and years.
 
 The below tables were created using the pre-written code "Mobile Manufacturere Analysis - Create Database and Tables". 
 
