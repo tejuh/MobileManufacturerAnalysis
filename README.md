@@ -10,7 +10,7 @@ The tables were created using the pre-written code "Mobile Manufacturer Analysis
 - Dim_model: Details of the models with manufacturer
 - Dim_customer: Customer personal information
 - Dim_location: Store location information
-- Fact_Transactions: Sales transactions information
+- Fact_Transactions: Sales transactions information 
 
 **Database schema**
 
@@ -19,11 +19,11 @@ The tables were created using the pre-written code "Mobile Manufacturer Analysis
 **Questions**
 
 
-1. List all states where customer have bought mobile phones from 2005.
+1. List all states where customerS have bought mobile phones from 2005.
 
 2. Which state in the US is buying the most SAMSUNG phones?
 
-3. Show the total number of transacitons for each model per zip code per state. 
+3. Show the total number of transacitons for each model per zip code and per state. 
 
 4. Show the cheapest mobile phone
 
@@ -31,11 +31,11 @@ The tables were created using the pre-written code "Mobile Manufacturer Analysis
 
 6. List the names of customers and the average amount spent in 2009 where the average is higher than 500
  
-7. List if there are any models that was in top 5 in terms of quantity, simultaneously in 2008, 2009 and 2010 
+7. List if there are any models that were in top 5 in terms of quantity simultaneously in 2008, 2009 and 2010 
 
 8. Show the manufacturers with the second top sales in the year 2009 and 2010
   
 9. Show the manufacturers that sold cellphone in 2010 but didnt in 2009
 
-10. Find top 100 customers and their average spend, average quantity by each year. Also find the percentage of change in their spending.
+10. Find top 100 customers and their average spend, average quantity by each year. Also find the percentage change in their spending.
 
