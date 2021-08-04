@@ -10,7 +10,8 @@ The below tables were created using the pre-written code "Mobile Manufacturere A
 - Dim_location: Store location information
 - Fact_Transactions: Sales transactions information
 
-Analysis
+
+Code
 
 1. ALL STATES WHERE CUSTOMERS HAVE BOUGHT CELLPHONES FROM 2005 
 
